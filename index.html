@@ -2,165 +2,160 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <title>Check-in für Ani ❄️</title>
+  <title>Ani Check-in 🌸</title>
   <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f6f7fb;
-      color: #333;
+      font-family: Arial, sans-serif;
+      background: #f7f7fb;
       display: flex;
       justify-content: center;
-      align-items: center;
-      min-height: 100vh;
+      padding: 40px;
     }
 
     .card {
-      background: #fff;
-      padding: 30px;
-      border-radius: 14px;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
       width: 100%;
-      max-width: 440px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 420px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
     p {
+      text-align: center;
       color: #555;
-    }
-
-    .question {
-      margin: 20px 0;
     }
 
     label {
       display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
+      margin-top: 18px;
+      font-weight: bold;
     }
 
-    input[type="range"] {
+    input[type="number"] {
       width: 100%;
-    }
-
-    .value {
-      font-size: 0.9rem;
-      margin-top: 4px;
-      color: #666;
+      padding: 8px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     .radio-group {
-      display: flex;
-      gap: 15px;
       margin-top: 8px;
     }
 
     button {
-      margin-top: 22px;
+      margin-top: 25px;
       width: 100%;
       padding: 12px;
       border: none;
-      border-radius: 10px;
-      background: #5b6cff;
+      border-radius: 8px;
+      background: #6c63ff;
       color: white;
-      font-size: 1rem;
+      font-size: 16px;
       cursor: pointer;
     }
 
     button:hover {
-      background: #4858e0;
+      background: #5850ec;
     }
 
-    .options {
-      margin-top: 22px;
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      border-radius: 8px;
       display: none;
     }
 
-    .option {
-      background: #f0f1ff;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+    .error {
+      background: #ffecec;
+      color: #b00020;
     }
 
-    .note {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: #555;
+    .success {
+      background: #ecfff3;
+      color: #006b3c;
+    }
+
+    ul {
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h1>Hallo Ani 🌨️</h1>
-    <p>Kleiner Check-in am letzten Tag der Winterferien, bevor die Uni wieder startet 💫</p>
+    <h1>Ani Check-in 🌸</h1>
+    <p>Kurzer Check-in vor dem letzten Tag der Winterferien ☕🎨</p>
 
-    <div class="question">
-      <label for="health">Wie geht es deiner Gesundheit heute? 💙</label>
-      <input type="range" id="health" min="0" max="10" value="5" />
-      <div class="value">Gesundheit: <span id="healthValue">5</span>/10</div>
-    </div>
+    <form id="checkinForm">
+      <label>Wie gut fühlst du dich gesundheitlich? (0–10) 🤒➡️😊</label>
+      <input type="number" min="0" max="10" required />
 
-    <div class="question">
-      <label for="bored">Wie langweilig ist dir gerade? 😴</label>
-      <input type="range" id="bored" min="0" max="10" value="5" />
-      <div class="value">Langeweile: <span id="boredValue">5</span>/10</div>
-    </div>
+      <label>Wie gelangweilt bist du gerade? (0–10) 😐➡️🥱</label>
+      <input type="number" min="0" max="10" required />
 
-    <div class="question">
-      <label for="fun">Hast du Lust, etwas Schönes zu machen? ✨</label>
-      <input type="range" id="fun" min="0" max="10" value="5" />
-      <div class="value">Lust-Level: <span id="funValue">5</span>/10</div>
-    </div>
+      <label>Wie sehr hast du Lust, etwas Schönes zu machen? (0–10) ✨</label>
+      <input type="number" min="0" max="10" required />
 
-    <div class="question">
       <label>Magst du Wasser? 💧</label>
       <div class="radio-group">
-        <label><input type="radio" name="water" /> Ja</label>
-        <label><input type="radio" name="water" /> Nein</label>
+        <input type="radio" name="water" value="Ja" required /> Ja 💦
+        <br />
+        <input type="radio" name="water" value="Nein" /> Nein 🙅‍♀️
       </div>
-    </div>
 
-    <button onclick="checkIn()">Absenden 💌</button>
+      <button type="submit">Abschicken 💌</button>
+    </form>
 
-    <div class="options" id="options">
-      <h2>Klingt nach einem guten Tag ☕🎨🍕</h2>
-
-      <div class="option">🍵 Zusammen Tee trinken</div>
-      <div class="option">🎨 Etwas malen & gemütlich sein</div>
-      <div class="option">🍕 Pizza & Lebkuchen, wenn du magst</div>
-
-      <div class="note">
-        Alles ganz entspannt. Nur Vorschläge – kein Druck 🌱
-      </div>
-    </div>
+    <div id="result" class="result"></div>
   </div>
 
   <script>
-    const health = document.getElementById("health");
-    const bored = document.getElementById("bored");
-    const fun = document.getElementById("fun");
+    document.getElementById("checkinForm").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const healthValue = document.getElementById("healthValue");
-    const boredValue = document.getElementById("boredValue");
-    const funValue = document.getElementById("funValue");
+      const inputs = document.querySelectorAll('input[type="number"]');
+      const waterChoice = document.querySelector('input[name="water"]:checked').value;
+      const resultDiv = document.getElementById("result");
 
-    health.oninput = () => healthValue.textContent = health.value;
-    bored.oninput = () => boredValue.textContent = bored.value;
-    fun.oninput = () => funValue.textContent = fun.value;
+      let sum = 0;
+      inputs.forEach(input => sum += Number(input.value));
+      let average = sum / inputs.length;
 
-    function checkIn() {
-      if (parseInt(health.value) >= 8) {
-        document.getElementById("options").style.display = "block";
+      resultDiv.style.display = "block";
+
+      if (average < 8) {
+        resultDiv.className = "result error";
+        resultDiv.innerHTML = `
+          <strong>Sorry 🫶</strong><br><br>
+          Für heute brauchst du leider einen Gesamtwert von mindestens <strong>8</strong>.<br>
+          Dein Score war <strong>${average.toFixed(1)}</strong>.<br><br>
+          Ruh dich etwas aus; wir können später immer noch etwas planen.🌙💛
+        `;
       } else {
-        document.getElementById("options").style.display = "none";
-        alert("Heute lieber ruhig machen 💙 Erholen ist wichtiger als Pläne.");
+        resultDiv.className = "result success";
+        resultDiv.innerHTML = `
+          <strong>Juhu! 🌈</strong><br><br>
+          Dein Score ist <strong>${average.toFixed(1)}</strong> —  hättest du deshalb Lust, heute Abend etwas zusammen zu unternehmen?
+
+
+<em>Du kannst natürlich auch Nein sagen – das ist vollkommen okay ❤️</em><br><br>
+
+          <strong>Mögliche Aktivitäten:</strong>
+          <ul>
+            <li>☕ Tee trinken und plaudern</li>
+            <li>🎨 Zusammen malen</li>
+            <li>🍕 Pizza (mit Soße, hehe) und Lebkuchen essendas schreit nach einem Plan 😌</li>
+          </ul>
+        `;
       }
-    }
+    });
   </script>
 
 </body>
