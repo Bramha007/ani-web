@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Check-in für Ani ❄️</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f6f7fb;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+
+    p {
+      color: #555;
+    }
+
+    .question {
+      margin: 20px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    .value {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: #666;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 8px;
+    }
+
+    button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #5b6cff;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4858e0;
+    }
+
+    .options {
+      margin-top: 22px;
+      display: none;
+    }
+
+    .option {
+      background: #f0f1ff;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hey Ani 🌨️</h1>
+    <p>Kleiner Check-in am letzten Tag der Winterferien, bevor die Uni wieder startet 💫</p>
+
+    <div class="question">
+      <label for="health">Wie geht es deiner Gesundheit heute? 💙</label>
+      <input type="range" id="health" min="0" max="10" value="5" />
+      <div class="value">Gesundheit: <span id="healthValue">5</span>/10</div>
+    </div>
+
+    <div class="question">
+      <label for="bored">Wie langweilig ist dir gerade? 😴</label>
+      <input type="range" id="bored" min="0" max="10" value="5" />
+      <div class="value">Langeweile: <span id="boredValue">5</span>/10</div>
+    </div>
+
+    <div class="question">
+      <label for="fun">Hast du Lust, etwas Schönes zu machen? ✨</label>
+      <input type="range" id="fun" min="0" max="10" value="5" />
+      <div class="value">Lust-Level: <span id="funValue">5</span>/10</div>
+    </div>
+
+    <div class="question">
+      <label>Magst du Wasser? 💧</label>
+      <div class="radio-group">
+        <label><input type="radio" name="water" /> Ja</label>
+        <label><input type="radio" name="water" /> Nein</label>
+      </div>
+    </div>
+
+    <button onclick="checkIn()">Absenden 💌</button>
+
+    <div class="options" id="options">
+      <h2>Klingt nach einem guten Tag ☕🎨🍕</h2>
+
+      <div class="option">🍵 Zusammen Tee trinken</div>
+      <div class="option">🎨 Etwas malen & gemütlich sein</div>
+      <div class="option">🍕 Pizza & Lebkuchen, wenn du magst</div>
+
+      <div class="note">
+        Alles ganz entspannt. Nur Vorschläge – kein Druck 🌱
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const health = document.getElementById("health");
+    const bored = document.getElementById("bored");
+    const fun = document.getElementById("fun");
+
+    const healthValue = document.getElementById("healthValue");
+    const boredValue = document.getElementById("boredValue");
+    const funValue = document.getElementById("funValue");
+
+    health.oninput = () => healthValue.textContent = health.value;
+    bored.oninput = () => boredValue.textContent = bored.value;
+    fun.oninput = () => funValue.textContent = fun.value;
+
+    function checkIn() {
+      if (parseInt(health.value) > 8) {
+        document.getElementById("options").style.display = "block";
+      } else {
+        document.getElementById("options").style.display = "none";
+        alert("Heute lieber ruhig machen 💙 Erholen ist wichtiger als Pläne.");
+      }
+    }
+  </script>
+
+</body>
+</html>
