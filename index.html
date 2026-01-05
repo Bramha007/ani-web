@@ -96,7 +96,7 @@
 <body>
 
   <div class="card">
-    <h1>Hey Ani 🌨️</h1>
+    <h1>Hallo Ani 🌨️</h1>
     <p>Kleiner Check-in am letzten Tag der Winterferien, bevor die Uni wieder startet 💫</p>
 
     <div class="question">
@@ -154,7 +154,7 @@
     fun.oninput = () => funValue.textContent = fun.value;
 
     function checkIn() {
-      if (parseInt(health.value) > 8) {
+      if (parseInt(health.value) >= 8) {
         document.getElementById("options").style.display = "block";
       } else {
         document.getElementById("options").style.display = "none";
